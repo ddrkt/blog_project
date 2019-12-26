@@ -1,1 +1,6 @@
-raf
+<% posts.each do |post| %>
+  <%= post.body %>
+  <%= link_to 'Show detail', post_path(post) %>
+<%end %>
+
+<%= link_to 'Create new post', new_post_path %>
