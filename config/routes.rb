@@ -2,7 +2,7 @@ Rails.application.routes.draw do
   devise_for :users
   use_doorkeeper
   resources :posts do
-    resources :comments
+    resources :comments, shallow: true, only: [:create, :update, :destroy]
   end
 
   root to: "posts#index"

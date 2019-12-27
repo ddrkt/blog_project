@@ -1,7 +1,15 @@
-<li class='comment' id="comment_#{comment.id}">
+<li class='comment' id="<%= "comment_#{comment.id}"%>">
   <div> <%= comment.body %> </div>
   <% if current_user&.author_of?(comment) %>
-    <div> <%= link_to 'Delete comment' %> </div>
+    <div> <%= link_to 'Delete comment', comment, remote: true, method: :delete %> </div>
     <div> <%= link_to 'Edit comment' %> </div>
+  <% end %>
+
+  <%= form_with model: comment do |f|  %>
+
+    <%= f.label :body %>
+    <%= f.text_area :body %>
+
+    <%= f.submit 'COMMENT' %>
   <% end %>
 </li>
