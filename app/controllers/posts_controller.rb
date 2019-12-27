@@ -1,6 +1,7 @@
 class PostsController < ApplicationController
   expose :posts, ->{ Post.all }
   expose :post, build: -> (post_params){ current_user.posts.new(post_params) }
+  expose :comment, -> { post.comments.new }
 
   def create
     if post.save
@@ -19,8 +20,8 @@ class PostsController < ApplicationController
   end
 
   def destroy
-    thing.destroy
-    redirect_to things_path
+    post.destroy if current_user&.author_of?(post)
+    redirect_to post_path
   end
 
   private
