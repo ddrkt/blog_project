@@ -1,3 +1,11 @@
 <%= post.name %>
 <%= post.body %>
-<ul> <%=render post.comments %> </ul>
+<ul class="comments"> <%=render post.comments %> </ul>
+<div class="comment-errors"> </div>
+<%= form_with model: [post, comment] do |f|  %>
+
+  <%= f.label :body %>
+  <%= f.text_area :body %>
+
+  <%= f.submit 'COMMENT' %>
+<% end %>

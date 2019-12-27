@@ -1,0 +1,5 @@
+<% if comment.persisted? %>
+$('.comments').append('<%= j render comment %>');
+$('.notice').html('<span id="message">Created</span>');
+$('#message').fadeOut(10000);
+<% end %>
