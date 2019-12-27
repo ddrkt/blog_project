@@ -5,11 +5,11 @@
     <div> <%= link_to 'Edit comment' %> </div>
   <% end %>
 
-  <%= form_with model: comment do |f|  %>
+  <%= form_with model: comment, remote: true, method: :put, url: comment do |f| %>
 
     <%= f.label :body %>
     <%= f.text_area :body %>
 
-    <%= f.submit 'COMMENT' %>
+    <%= f.submit 'EDIT' %>
   <% end %>
 </li>

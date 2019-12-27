@@ -9,6 +9,7 @@ class CommentsController < ApplicationController
 
   def update
     comment.update(comment_params) if current_user&.author_of?(comment)
+    @post = comment.post
   end
 
   def destroy
